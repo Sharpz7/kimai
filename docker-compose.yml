@@ -44,7 +44,7 @@ services:
     image: sharp6292/kimai:latest
 
     environment:
-      - ADMINMAIL=admin@kimai.local
+      - ADMINMAIL=${ADMIN_USER}
       - ADMINPASS=${ADMIN_PASS}
       - DATABASE_URL=mysql://kimaiuser:kimaipassword@sqldb/kimai
       - TRUSTED_HOSTS=nginx,localhost,127.0.0.1,logbook.mcaq.me
