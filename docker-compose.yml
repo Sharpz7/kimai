@@ -24,8 +24,6 @@ services:
 
   kimai-nginx:
     image: tobybatch/nginx-fpm-reverse-proxy
-    ports:
-      - 8001:80
 
     volumes:
       - public:/opt/kimai/public:ro
