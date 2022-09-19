@@ -1,0 +1,9 @@
+version: 1.1
+
+tasks:
+  kimai_task:
+    name: kimai Server
+    envfile: .env
+    type: docker
+    giturl: https://raw.githubusercontent.com/Sharpz7/
+    compose: /kimai/main/docker-compose.yml

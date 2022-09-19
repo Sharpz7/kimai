@@ -1,0 +1,42 @@
+version: 2.1
+
+orbs:
+  docker: sharptools/docker@volatile
+  sharpcd: sharptools/sharpcd@volatile
+
+jobs:
+  deploy:
+    docker:
+      - image: cimg/base:2020.01
+
+    steps:
+      - sharpcd/install
+
+      - run:
+          name: "Setup Env"
+          command: |
+            echo "VOUCHID=${VOUCHID}" >> .env
+            echo "VOUCHSECRET=${VOUCHSECRET}" >> .env
+            echo "DOMAIN=${DOMAIN}" >> .env
+            echo "ADMIN_EMAIL=${ADMIN_EMAIL}" >> .env
+            echo "CALLBACK_URL=${CALLBACK_URL}" >> .env
+
+      - sharpcd/deploy
+
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - docker/build_wait:
+          context: General
+          image: sharp6292/vouch:latest
+
+
+      - deploy:
+          context: General
+          requires:
+            - docker/build_wait
+
+          filters:
+            branches:
+              only: main
