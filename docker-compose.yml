@@ -43,7 +43,7 @@ services:
       retries: 3
 
   kimai:
-    image: kimai/kimai2:fpm
+    image: sharp6292/kimai:latest
 
     environment:
       - ADMINMAIL=admin@kimai.local

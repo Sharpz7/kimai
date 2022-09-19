@@ -15,11 +15,8 @@ jobs:
       - run:
           name: "Setup Env"
           command: |
-            echo "VOUCHID=${VOUCHID}" >> .env
-            echo "VOUCHSECRET=${VOUCHSECRET}" >> .env
-            echo "DOMAIN=${DOMAIN}" >> .env
-            echo "ADMIN_EMAIL=${ADMIN_EMAIL}" >> .env
-            echo "CALLBACK_URL=${CALLBACK_URL}" >> .env
+            echo "SQL_ROOT_PASS=${SQL_ROOT_PASS}" >> .env
+            echo "ADMIN_PASS=${ADMIN_PASS}" >> .env
 
       - sharpcd/deploy
 
@@ -29,8 +26,7 @@ workflows:
     jobs:
       - docker/build_wait:
           context: General
-          image: sharp6292/vouch:latest
-
+          image: sharp6292/kimai:latest
 
       - deploy:
           context: General
