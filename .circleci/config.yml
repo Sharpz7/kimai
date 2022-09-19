@@ -17,6 +17,7 @@ jobs:
           command: |
             echo "SQL_ROOT_PASS=${SQL_ROOT_PASS}" >> .env
             echo "ADMIN_PASS=${ADMIN_PASS}" >> .env
+            echo "ADMIN_USER=${ADMIN_USER}" >> .env
 
       - sharpcd/deploy
 
